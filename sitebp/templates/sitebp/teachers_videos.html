@@ -1,0 +1,19 @@
+
+<html>
+
+<head>
+  <title>teachers_videos</title>
+</head>
+
+<body>
+            <h1> teachrs.videos</h1>
+              <a href="{% url 'teachers_videos_upload' %}" >upload <a>
+            {% for video in videos %}
+                <ol>
+                  <li> <a href="#"> {{video.name}} </a> </li>
+                </ol>
+            {% endfor %}
+            
+</body>
+
+</html>
