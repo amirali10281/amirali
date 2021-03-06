@@ -1,0 +1,23 @@
+
+<html>
+
+<head>
+  <title>teachers_exercise</title>
+</head>
+
+<body>
+            <h1> teachrs.exercise</h1>
+            
+            <h2 style ="background:yellow ; color : blue">  <a href="{% url 'teachers_exercise_upload' %}" >upload <a> </h2>
+              <p  wigth = '100%'>
+              <ol style="background : pink">
+                {% for file in exercise %}
+                    
+                      <li> <a href="{% url 'teachers_exercise_answers' file.id %}" >{{ file.name }} <a> </li>
+                    
+                {% endfor %}
+              </ol>
+              </p>
+</body>
+
+</html>

@@ -7,13 +7,17 @@
 
 <body>
             <h1> teachrs.videos</h1>
-              <a href="{% url 'teachers_videos_upload' %}" >upload <a>
-            {% for video in videos %}
-                <ol>
-                  <li> <a href="#"> {{video.name}} </a> </li>
-                </ol>
-            {% endfor %}
             
+            <h2 style ="background:yellow ; color : blue">  <a href="{% url 'teachers_videos_upload' %}" >upload <a> </h2>
+              <p  wigth = '100%'>
+              <ol style="background : pink">
+                {% for video in videos %}
+                    
+                      <li> <a href="{% url 'teachers_videos_seen' video.id %}" > {{video.name}} </a> </li>
+                    
+                {% endfor %}
+              </ol>
+              </p>
 </body>
 
 </html>
