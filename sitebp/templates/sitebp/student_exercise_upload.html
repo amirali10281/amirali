@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>teachers.exercise.upload</title>
+</head>
+
+<body>
+    <h2>upload</h2>
+    <h2 style ="background:green ; color : white">  <a href="{% url 'home' %}" " >go home <a> </h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+       {% csrf_token %}
+       {{form}}
+       <br />
+       <br />
+       <input type ="submit" style ="color:blue" value="submit">
+    </form>
+</body>
+
+</html> 

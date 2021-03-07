@@ -19,3 +19,20 @@ class Student_exercise_upload (ModelForm):
     class Meta:
         model = models.Answers
         fields = ['exercise','number','file']
+
+class NameForm(forms.Form):
+    your_name = forms.CharField(label='Your name', max_length=100)
+   # passw = forms.CharField(label='pass', max_length=100)
+
+
+class login (ModelForm):
+    class Meta:
+        model=models.Login
+        fields= '__all__'
+        widgets = {'password':forms.PasswordInput()}
+''''
+class login (ModelForm):
+    number=forms.CharField()
+    password=forms.CharField(widgets=forms.PasswordInput)
+
+'''

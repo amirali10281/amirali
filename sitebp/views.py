@@ -1,10 +1,28 @@
 from django.shortcuts import render
 from . import models , forms
 from django.http import HttpResponse
+from datetime import datetime 
+from django.views import generic
 
 # Create your views here.
 def home (request):
-    contex ={}
+    
+    form = forms.login()
+    if request.method == 'POST':
+        form = forms.login(request.POST)
+        if form.is_valid ():
+            if models.users.objects.filter(number=request.POST['number']):
+                #if models.users.objects.filter(number=request.POST['number'])[0].pnumber==request.POST['number']:
+                print(models.users.objects.get(number=request.POST['number']).pnumber,request.POST['password'])
+                print (models.users.objects.get(number=request.POST['number']).mode)
+                if models.users.objects.get(number=request.POST['number']).pnumber == request.POST['password']:
+                
+                    #return render (request , 'sitebp/teachers.html' )
+                    if models.users.objects.get(number=request.POST['number']).mode=='t':
+                        return render (request , 'sitebp/teachers.html' )
+                    else: return render (request , 'sitebp/students.html' )
+
+    contex ={'form' : form}
 
     return render (request , 'sitebp/home.html' , contex)
 
@@ -61,14 +79,16 @@ def student_exercise_upload (request):
     form = forms.Student_exercise_upload
     if request.method == 'POST':
         form = forms.Student_exercise_upload(request.POST , request.FILES)
-        if form.is_valid ():
-            form.save()
-            return HttpResponse ("OK")
+        if form.deadline >= datetime.now() :
+            if form.is_valid ():
+                form.save()
+                return HttpResponse ("OK")
+        else : return HttpResponse('its late khi khi khi khi')
 
     contex ={'form' : form}
 
 
-    return render (request , 'sitebp/teachers_exercise_upload.html' , contex)
+    return render (request , 'sitebp/student_exercise_upload.html' , contex)
 
 
 def teachers_exercise_upload (request):
@@ -102,3 +122,11 @@ def teachers_videos_upload (request):
 
 def teachers_videos_seen (reauest , videoid):
     return render(reauest, 'sitebp/teachers_videos_seen.html',{'video':models.Videos.objects.get(id=videoid)})
+
+class login(generic.TemplateView):
+    
+    template_name='sitebp/login.html'
+
+
+
+
