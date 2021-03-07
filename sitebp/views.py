@@ -57,6 +57,20 @@ def teachers_videos (request):
     return render (request , 'sitebp/teachers_videos.html' , contex)
 
 
+def student_exercise_upload (request):
+    form = forms.Student_exercise_upload
+    if request.method == 'POST':
+        form = forms.Student_exercise_upload(request.POST , request.FILES)
+        if form.is_valid ():
+            form.save()
+            return HttpResponse ("OK")
+
+    contex ={'form' : form}
+
+
+    return render (request , 'sitebp/teachers_exercise_upload.html' , contex)
+
+
 def teachers_exercise_upload (request):
     form = forms.Teachers_exercise_upload
     if request.method == 'POST':

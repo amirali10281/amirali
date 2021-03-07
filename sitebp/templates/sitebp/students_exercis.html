@@ -7,8 +7,8 @@
 
 <body>
             <h1> students.exercise</h1>
-            
-            <h2 style ="background:yellow ; color : blue">  <a href="#" >upload <a> </h2>
+            <h2 style ="background:green ; color : white">  <a href="{% url 'home' %}" " >go home <a> </h2>
+            <h2 style ="background:yellow ; color : blue">  <a href="{% url 'student_exercise_upload' %}" " >upload <a> </h2>
               <p  wigth = '100%'>
               <ol style="background : pink">
                 {% for file in exercise %}

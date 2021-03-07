@@ -15,7 +15,7 @@ class Teachers_exercise_upload (ModelForm):
         fields = '__all__'
 
 
-class Answers (ModelForm):
+class Student_exercise_upload (ModelForm):
     class Meta:
         model = models.Answers
         fields = ['exercise','number','file']
