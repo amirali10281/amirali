@@ -14,16 +14,38 @@ def teachers (request):
     return render (request , 'sitebp/teachers.html' , contex)
 
 
+def students (request):
+    contex ={}
+
+    return render (request , 'sitebp/students.html' , contex)
+
+
+def students_exercise (request):
+    exercise = models.Exercise.objects.all()
+    contex ={'exercise' : exercise}
+
+    return render (request , 'sitebp/students_exercis.html' , contex)
+
+def students_videos (request):
+    videos = models.Videos.objects.all()
+    contex ={'videos' : videos}
+
+    return render (request , 'sitebp/students_videos.html' , contex)
+
 def teachers_exercise (request):
     exercise = models.Exercise.objects.all()
     contex ={'exercise' : exercise}
 
     return render (request , 'sitebp/teachers_exercis.html' , contex)
 
+
+
 def teachers_exercise_answers (request,answer_id):
     #answer = models.Answers.objects.filter(id = answer_id)
     #contex ={'answers' : answer}
     answers=models.Answers.objects.filter(exercise=models.Exercise.objects.get(id=answer_id))
+    #answers=models.Exercise.objects.get(id =answer_id)
+    #answers = models.Answers.objects.filter(id=answer_id)
     contex={'answers':answers}
     return render (request , 'sitebp/teachers_exercise_answers.html' , contex)
 

@@ -1,0 +1,23 @@
+
+<html>
+
+<head>
+  <title>students_exercise</title>
+</head>
+
+<body>
+            <h1> students.exercise</h1>
+            
+            <h2 style ="background:yellow ; color : blue">  <a href="#" >upload <a> </h2>
+              <p  wigth = '100%'>
+              <ol style="background : pink">
+                {% for file in exercise %}
+                    
+                      <li> <a href="/{{file.file}}" >{{ file.name }} <a> </li>
+                    
+                {% endfor %}
+              </ol>
+              </p>
+</body>
+
+</html>

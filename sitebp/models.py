@@ -21,7 +21,7 @@ class Exercise (models.Model):
         return self.name
 
 class Answers (models.Model):
-    exercise=models.ForeignKey("Exercise", on_delete=models.CASCADE)
+    exercise=models.ForeignKey("Exercise", on_delete=models.CASCADE, null=True)
     number=models.IntegerField()
     file = models.FileField( upload_to="exercise")
     deadline= models.DateTimeField(default=datetime.now(), blank=True)

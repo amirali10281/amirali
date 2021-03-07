@@ -1,0 +1,22 @@
+<html>
+
+<head>
+  <title>students_videos</title>
+</head>
+
+<body>
+            <h1> studens.videos</h1>
+            
+            
+              <p  wigth = '100%'>
+              <ol style="background : pink">
+                {% for video in videos %}
+                    
+                      <li> <a href="{% url 'teachers_videos_seen' video.id %}" > {{video.name}} </a> </li>
+                    
+                {% endfor %}
+              </ol>
+              </p>
+</body>
+
+</html>

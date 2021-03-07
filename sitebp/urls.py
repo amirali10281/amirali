@@ -27,6 +27,12 @@ urlpatterns = [
     path('teachers/videos/upload' , views.teachers_videos_upload,name="teachers_videos_upload"),
     path ('teachers/videos/seen/<int:videoid>', views.teachers_videos_seen , name ="teachers_videos_seen"),
 
+#=============================================================================================
+#---------------------------------------------------------------------------------------------
+    path('students/', views.students,name='students'),
+    path('students/videos/', views.students_videos,name='students_videos'),
+    path ('students/exercise' , views.students_exercise , name ="students_exercise"),
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
