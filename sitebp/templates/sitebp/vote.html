@@ -1,0 +1,9 @@
+    <form action="" method="POST" enctype="multipart/form-data">
+       {% csrf_token %}
+       {{form}}
+       <br />
+       <br />
+       <input type ="submit" style ="color:blue" value="submit">
+    </form>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <a href="{% url 'teachers_exercise'  %}" > back </a>

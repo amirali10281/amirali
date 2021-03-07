@@ -11,11 +11,12 @@ def home (request):
     if request.method == 'POST':
         form = forms.login(request.POST)
         if form.is_valid ():
-            if models.users.objects.filter(number=request.POST['number']):
+            if (models.users.objects.filter(number=request.POST['number'])):
+            #if (models.users.objects.filter(number=request.POST['number'])) or (models.users.objects.get(number=request.POST['number']).pnumber == request.POST['password']):
                 #if models.users.objects.filter(number=request.POST['number'])[0].pnumber==request.POST['number']:
                 print(models.users.objects.get(number=request.POST['number']).pnumber,request.POST['password'])
                 print (models.users.objects.get(number=request.POST['number']).mode)
-                if models.users.objects.get(number=request.POST['number']).pnumber == request.POST['password']:
+                if (models.users.objects.get(number=request.POST['number']).pnumber == request.POST['password']):
                 
                     #return render (request , 'sitebp/teachers.html' )
                     if models.users.objects.get(number=request.POST['number']).mode=='t':
@@ -120,13 +121,26 @@ def teachers_videos_upload (request):
     return render (request , 'sitebp/teachers_videos_upload.html' , contex)
 
 
-def teachers_videos_seen (reauest , videoid):
-    return render(reauest, 'sitebp/teachers_videos_seen.html',{'video':models.Videos.objects.get(id=videoid)})
+def teachers_videos_seen (request , videoid):
+    return render(request, 'sitebp/teachers_videos_seen.html',{'video':models.Videos.objects.get(id=videoid)})
 
 class login(generic.TemplateView):
     
     template_name='sitebp/login.html'
 
+def vote (request,idd):
+    form = forms.vote()
+    if request.method == 'POST':
+        form = forms.vote(request.POST)
+        if form.is_valid ():
+            q=models.Answers.objects.get(id=idd)
+            q.vote=request.POST['number']
+            print ('hellllllll')
+            
+            
+            print (q.vote,request.POST['number'])
+            q.save()
+            return HttpResponse ("OK")
 
-
-
+    contex ={'form' : form}
+    return render(request, 'sitebp/vote.html',contex)

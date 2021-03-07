@@ -36,3 +36,8 @@ class login (ModelForm):
     password=forms.CharField(widgets=forms.PasswordInput)
 
 '''
+
+class vote(ModelForm):
+    class Meta:
+        model=models.vote
+        fields=['number']

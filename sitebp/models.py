@@ -19,6 +19,9 @@ class Login (models.Model):
     number=models.IntegerField()
     password=models.CharField( max_length=50)
 
+class vote(models.Model):
+    number=models.IntegerField()
+
 
 class Videos(models.Model):
     name=models.CharField( max_length=300)

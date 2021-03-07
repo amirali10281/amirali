@@ -33,7 +33,7 @@ urlpatterns = [
     path('students/videos/', views.students_videos,name='students_videos'),
     path ('students/exercise' , views.students_exercise , name ="students_exercise"),
     path ('student/exercise/upload' , views.student_exercise_upload , name ="student_exercise_upload"),
-
+    path ('vote/<int:idd>',views.vote, name="vote")
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

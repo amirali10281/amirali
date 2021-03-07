@@ -24,7 +24,7 @@
                 <td>{{ answer.number }}</td>
                 <td>{{ answer.deadline }}</td>
                 <td><a href="/{{answer.file}}" > download </a></td>
-                <td><a href ="{utl 'vote'answer.id">{{ answer.vote }}</a></td>
+                <td><a href ="{% url 'vote' answer.id %}">{{ answer.vote }}</a></td>
             </tr>
         {% endfor %}
 
